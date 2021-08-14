@@ -1,0 +1,38 @@
+table div.plugin-activate-deactivate {
+  display: flex;
+  align-items: center;
+}
+table div.plugin-activate-deactivate label.activate, table div.plugin-activate-deactivate label.deactivate {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}
+table div.plugin-activate-deactivate label.activate {
+  margin-right: 5px;
+  background: rgba(0, 128, 0, 0.1);
+}
+table div.plugin-activate-deactivate label.deactivate {
+  background: rgba(255, 0, 0, 0.1);
+}
+table div.plugin-activate-deactivate input[type=radio] {
+  margin: 0 5px 0 5px;
+}
+table tr.disabled {
+  pointer-events: none;
+  opacity: 0.75;
+}
+
+.nav-tab.active-profile {
+  position: relative;
+}
+.nav-tab.active-profile::after {
+  display: block;
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  right: 5px;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, #357134 50%, rgba(0, 0, 0, 0) 100%);
+  content: "";
+  border-radius: 50%;
+}
