@@ -1,22 +1,22 @@
 # Plugin Profiles
 
-Contributors: katsar0v
-Tags: plugins, profiler
+Contributors: katsar0v  
+Tags: plugins, profiler  
 Requires PHP: 7.0  
-Tested up to: 5.8
-Requires at least: 5.0 
-Stable tag: 1.0.0
-License: GPL v3
-
-Allows you to create and manage sets of plugins within WordPress.
+Tested up to: 5.8  
+Requires at least: 5.0  
+Stable tag: 1.0.0  
+License: GPL v3  
+  
+Allows you to create and manage sets of plugins within WordPress.  
 
 ## Description
 
 This plugin allows you to create sets of profiles within WordPress so you can test the performance of your website and how it is affected by the different plugins.
-This comes in handy in some cases, e.g.:
+This comes in handy in some cases, e.g.:  
 - when optimizing a website and you are not sure which plugin causes your website to be slow
 - if you are looking for alternatives and you want to compare the performance
-
+  
 and probably more.
 
 ## Screenshots
