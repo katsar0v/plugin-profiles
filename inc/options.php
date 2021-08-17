@@ -65,13 +65,14 @@ add_action( 'admin_init', function() {
             break;
         case 'update_profile':
             global $wpdb;
-            if( !is_array( $_POST['new_profile'] ) )
+            if( !is_array( $_POST['new_profile'] ) || !is_array( $_POST['new_profile']['plugins'] ) )
                 wp_die();
 
-            $name = $_POST['new_profile']['name'];
+            $name = sanitize_text_field( $_POST['new_profile']['name'] );
+            $plugins = PluginProfiles::validate_and_sanitize_plugins_array( $_POST['new_profile']['plugins'] );
             $plugins = $_POST['new_profile']['plugins'];
 
-            $res = update_plugins_profile( $_GET['tab'], $name, $plugins );
+            $res = update_plugins_profile( sanitize_key( $_GET['tab'] ), $name, $plugins );
             if( $res > 0 ) {
                 $message = 'Profile updated';
             } else if ( $res == 0 ) {

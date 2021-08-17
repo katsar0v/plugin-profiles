@@ -10,6 +10,23 @@ class PluginProfiles {
     private const DEFAULT_PROFILE_NAME = 'pprofile_default_profile';
 
     /**
+     * Validates and sanitizes an array of plugins recursively
+     * @param Array $array
+     * @return Array
+     */
+    static function validate_and_sanitize_plugins_array( $array ) {
+        $tmp = [];
+        foreach( $array as $key => $value ) {
+            if( is_string( $value ) ) {
+                $tmp[ sanitize_text_field( $key ) ] = sanitize_text_field( $value );
+            } else if( is_array( $value ) ) {
+                $tmp[ sanitize_text_field( $key ) ] = PluginProfiles::validate_and_sanitize_plugins_array( $value );
+            }
+        }
+        return $tmp;
+    }
+
+    /**
      * Checks whether the default plugin profile is active
      * @return bool
      */

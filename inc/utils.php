@@ -17,12 +17,12 @@ function pprofiles_get_profile_tab_links() {
 
         $tab_classes = apply_filters( 'pprofiler_active_tab_class', $tab_classes, $profile );
         ?>
-            <a href="?page=<?php echo $_GET['page']; ?>&tab=<?php echo intval( $profile['id'] ); ?>" class="<?php echo $tab_classes; ?>"><?php echo esc_html( $profile['profile_name'] ); ?></a>
+            <a href="?page=<?php echo sanitize_key( $_GET['page'] ); ?>&tab=<?php echo intval( $profile['id'] ); ?>" class="<?php echo $tab_classes; ?>"><?php echo esc_html( $profile['profile_name'] ); ?></a>
         <?php
     }
 
     ?>
-        <a href="?page=<?php echo $_GET['page']; ?>&tab=new-profile" class="nav-tab <?php echo $active_tab == 'new-profile' ? 'nav-tab-active' : ''; ?>">Create profile +</a>
+        <a href="?page=<?php echo sanitize_key( $_GET['page'] ); ?>&tab=new-profile" class="nav-tab <?php echo $active_tab == 'new-profile' ? 'nav-tab-active' : ''; ?>">Create profile +</a>
     <?php
 }
 
