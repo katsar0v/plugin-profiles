@@ -70,7 +70,6 @@ add_action( 'admin_init', function() {
 
             $name = sanitize_text_field( $_POST['new_profile']['name'] );
             $plugins = PluginProfiles::validate_and_sanitize_plugins_array( $_POST['new_profile']['plugins'] );
-            $plugins = $_POST['new_profile']['plugins'];
 
             $res = update_plugins_profile( sanitize_key( $_GET['tab'] ), $name, $plugins );
             if( $res > 0 ) {
@@ -84,11 +83,11 @@ add_action( 'admin_init', function() {
             add_filter( 'pprofiler-submit-message', function() use($message) { return $message; } );
             break;
         case 'new_profile':
-            if( !is_array( $_POST['new_profile'] ) )
+            if( !is_array( $_POST['new_profile'] ) || !is_array( $_POST['new_profile']['plugins'] ) )
                 wp_die();
 
-            $name = $_POST['new_profile']['name'];
-            $plugins = $_POST['new_profile']['plugins'];
+            $name = sanitize_text_field( $_POST['new_profile']['name'] );
+            $plugins = PluginProfiles::validate_and_sanitize_plugins_array( $_POST['new_profile']['plugins'] );
 
             $res = insert_plugins_profile( $name, $plugins );
             $message = $res ? 'Profile created' : 'There was an error creating the profile';
