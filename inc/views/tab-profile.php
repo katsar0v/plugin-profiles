@@ -5,7 +5,7 @@ if( isset( $_GET['on'] ) && $_GET['on'] == '1' ) {
     ?>
     <script>
         setTimeout( () => {
-            window.location.href = '/wp-admin/options-general.php?page=<?php echo sanitize_key( $_GET['page'] ); ?>&tab=<?php echo sanitize_key( $_GET['tab'] ); ?>';
+            window.location.href = '/wp-admin/options-general.php?page=<?php echo esc_attr( $_GET['page'] ); ?>&tab=<?php echo esc_attr( $_GET['tab'] ); ?>';
         }, 2000 );
     </script>
     <?php
@@ -15,7 +15,7 @@ if( isset( $_GET['default'] ) && $_GET['default'] == '1' && !isset( $_GET['on'] 
     PluginProfiles::update_default_profile( sanitize_key( $_GET['tab'] ) );
 }
 ?>
-<form action="/wp-admin/options-general.php?page=<?php echo sanitize_key( $_GET['page'] ); ?>&tab=<?php echo sanitize_key( $_GET['tab'] ); ?>" method="POST">
+<form action="/wp-admin/options-general.php?page=<?php echo esc_attr( $_GET['page'] ); ?>&tab=<?php echo esc_attr( $_GET['tab'] ); ?>" method="POST">
     <input type="hidden" name="action" value="update_profile">
     <table class="form-table">
         <tr>
@@ -30,12 +30,12 @@ if( isset( $_GET['default'] ) && $_GET['default'] == '1' && !isset( $_GET['on'] 
     <?php submit_button( 'Update profile' ); ?>
 
     <p>
-        <a href="?page=<?php echo sanitize_key( $_GET['page'] ); ?>&tab=<?php echo sanitize_key( $_GET['tab'] ); ?>&on=1" class="button">Activate profile</a>
-        <a href="?page=<?php echo sanitize_key( $_GET['page'] ); ?>&tab=<?php echo sanitize_key( $_GET['tab'] ); ?>&default=1" class="button button-secondary">Make default profile</a>
+        <a href="?page=<?php echo esc_attr( $_GET['page'] ); ?>&tab=<?php echo esc_attr( $_GET['tab'] ); ?>&on=1" class="button">Activate profile</a>
+        <a href="?page=<?php echo esc_attr( $_GET['page'] ); ?>&tab=<?php echo esc_attr( $_GET['tab'] ); ?>&default=1" class="button button-secondary">Make default profile</a>
     </p>
 
     <p>
-        <a style="color:red" href="?page=<?php echo sanitize_key( $_GET['page'] ); ?>&tab=<?php echo sanitize_key( $_GET['tab'] ); ?>&delete=1">Delete profile</a>
+        <a style="color:red" href="?page=<?php echo esc_attr( $_GET['page'] ); ?>&tab=<?php echo esc_attr( $_GET['tab'] ); ?>&delete=1">Delete profile</a>
         <?php
             if( isset( $_GET['delete'] ) && $_GET['delete'] == '1' && isset( $_GET['tab'] ) && is_numeric( $_GET['tab']) ) {
                 PluginProfiles::delete_profile( (int) $_GET['tab'] );
