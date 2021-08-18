@@ -165,7 +165,7 @@ class PluginProfiles {
         ?>
         <script>
             setTimeout( () => {
-                window.location.href = '/wp-admin/options-general.php?page=<?php echo esc_url( $_GET['page'] ); ?>';
+                window.location.href = '/wp-admin/options-general.php?page=<?php echo esc_attr( $_GET['page'] ); ?>';
             }, 1500 );
         </script>
         <?php
